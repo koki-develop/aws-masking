@@ -11,6 +11,9 @@ dependencies:
   '@plasmohq/storage':
     specifier: ^1.9.3
     version: 1.9.3(react@18.2.0)
+  clsx:
+    specifier: ^2.1.0
+    version: 2.1.0
   plasmo:
     specifier: 0.85.2
     version: 0.85.2(postcss@8.4.38)(react-dom@18.2.0)(react@18.2.0)
@@ -3174,6 +3177,11 @@ packages:
   /clone@2.1.2:
     resolution: {integrity: sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==}
     engines: {node: '>=0.8'}
+    dev: false
+
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
+    engines: {node: '>=6'}
     dev: false
 
   /code-red@1.0.4:
