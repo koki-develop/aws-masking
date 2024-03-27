@@ -130,7 +130,7 @@ const _annotateInput = (input: HTMLInputElement) => {
 
   for (const [dataAttr, patterns] of Object.entries(mappings)) {
     for (const pattern of patterns) {
-      if (new RegExp(pattern, "g").test(value)) {
+      if (new RegExp(`\\b${pattern}\\b`, "g").test(value)) {
         input.dataset[dataAttr] = "true";
         return;
       }
