@@ -11,6 +11,7 @@ import type { Settings } from "~lib/types";
 function IndexPopup() {
   const [settings, setSettings] = useStorage<Settings>("AWS_MASKING_SETTINGS", {
     disabled: false,
+    maskInputs: true,
     maskAccountIds: true,
     maskAccessKeys: true,
     maskSecretAccessKeys: true
@@ -18,6 +19,10 @@ function IndexPopup() {
 
   const handleChangeEnabled = useCallback((checked: boolean) => {
     setSettings((prev) => ({ ...prev, disabled: !checked }));
+  }, []);
+
+  const handleChangeMaskInputs = useCallback((checked: boolean) => {
+    setSettings((prev) => ({ ...prev, maskInputs: checked }));
   }, []);
 
   const handleChangeMaskAccountIds = useCallback((checked: boolean) => {
@@ -38,6 +43,11 @@ function IndexPopup() {
         label="Enabled"
         checked={!settings.disabled}
         onChange={handleChangeEnabled}
+      />
+      <Switch
+        label="Mask Inputs"
+        checked={settings.maskInputs}
+        onChange={handleChangeMaskInputs}
       />
       <Switch
         label="Mask Account IDs"

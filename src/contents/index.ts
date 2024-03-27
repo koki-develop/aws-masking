@@ -29,6 +29,7 @@ chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
 
 const _applySettings = (settings: Settings) => {
   document.body.dataset.aws_masking_disabled = settings.disabled.toString();
+  document.body.dataset.aws_masking_inputs = settings.maskInputs.toString();
   document.body.dataset.aws_masking_account_ids =
     settings.maskAccountIds.toString();
   document.body.dataset.aws_masking_access_key_ids =
@@ -143,7 +144,7 @@ const _annotateInput = (input: HTMLInputElement) => {
 
 const _observeInputs = (elem: Element) => {
   elem
-    .querySelectorAll("input[type=text], input[type=search]")
+    .querySelectorAll("input[type=text], input[type=search], textarea")
     .forEach((input: HTMLInputElement) => {
       input.removeEventListener("input", _handleChangeInput);
       input.addEventListener("input", _handleChangeInput);
