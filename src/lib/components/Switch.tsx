@@ -2,7 +2,7 @@ import { Switch as HeadlessSwitch } from "@headlessui/react";
 import clsx from "clsx";
 
 export type SwitchProps = {
-  label: string;
+  label?: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
 };
@@ -31,9 +31,11 @@ export default function Switch({ label, checked, onChange }: SwitchProps) {
             )}
           />
         </HeadlessSwitch>
-        <HeadlessSwitch.Label className="cursor-pointer">
-          {label}
-        </HeadlessSwitch.Label>
+        {label && (
+          <HeadlessSwitch.Label className="cursor-pointer">
+            {label}
+          </HeadlessSwitch.Label>
+        )}
       </div>
     </HeadlessSwitch.Group>
   );
