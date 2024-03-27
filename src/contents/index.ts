@@ -89,7 +89,7 @@ const _annotateTexts = (node: Element) => {
 
     for (const [dataAttr, patterns] of Object.entries(mappings)) {
       for (const pattern of patterns) {
-        const regexPattern = new RegExp(pattern, "g");
+        const regexPattern = new RegExp(`\\b${pattern}\\b`, "g");
         let match: RegExpExecArray;
         while ((match = regexPattern.exec(nodeVal))) {
           const matchText = match[0];
