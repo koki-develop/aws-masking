@@ -111,7 +111,7 @@ const _annotateTexts = (node: Element) => {
       newElement.appendChild(nonMatchedEndText);
     }
     if (matchFound) {
-      node.replaceWith(newElement);
+      node.parentElement.innerHTML = newElement.innerHTML;
     }
   }
 };
