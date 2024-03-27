@@ -4,6 +4,7 @@ import Switch from "~lib/components/Switch";
 
 import "./index.css";
 
+import clsx from "clsx";
 import { useCallback } from "react";
 
 import type { Settings } from "~lib/types";
@@ -43,37 +44,44 @@ function IndexPopup() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-2">
-      <Switch
-        label="Enabled"
-        checked={!settings.disabled}
-        onChange={handleChangeEnabled}
-      />
-      <Switch
-        label="Mask Inputs"
-        checked={settings.maskInputs}
-        onChange={handleChangeMaskInputs}
-      />
-      <Switch
-        label="Mask ARNs"
-        checked={settings.maskArns}
-        onChange={handleChangeMaskArns}
-      />
-      <Switch
-        label="Mask Account IDs"
-        checked={settings.maskAccountIds}
-        onChange={handleChangeMaskAccountIds}
-      />
-      <Switch
-        label="Mask Access Keys"
-        checked={settings.maskAccessKeys}
-        onChange={handleChangeMaskAccessKeys}
-      />
-      <Switch
-        label="Mask Secret Access Keys"
-        checked={settings.maskSecretAccessKeys}
-        onChange={handleChangeMaskSecretAccessKeys}
-      />
+    <div className="bg-secondary text-white">
+      <div className="px-4 py-2 flex">
+        <h1 className="text-base flex-grow whitespace-nowrap">AWS Masking</h1>
+        <Switch checked={!settings.disabled} onChange={handleChangeEnabled} />
+      </div>
+
+      <hr />
+
+      <div
+        className={clsx("flex flex-col gap-4 px-4 py-4", {
+          "opacity-50": settings.disabled
+        })}>
+        <Switch
+          label="Mask Inputs"
+          checked={settings.maskInputs}
+          onChange={handleChangeMaskInputs}
+        />
+        <Switch
+          label="Mask ARNs"
+          checked={settings.maskArns}
+          onChange={handleChangeMaskArns}
+        />
+        <Switch
+          label="Mask Account IDs"
+          checked={settings.maskAccountIds}
+          onChange={handleChangeMaskAccountIds}
+        />
+        <Switch
+          label="Mask Access Keys"
+          checked={settings.maskAccessKeys}
+          onChange={handleChangeMaskAccessKeys}
+        />
+        <Switch
+          label="Mask Secret Access Keys"
+          checked={settings.maskSecretAccessKeys}
+          onChange={handleChangeMaskSecretAccessKeys}
+        />
+      </div>
     </div>
   );
 }
