@@ -1,4 +1,5 @@
 import { Switch as HeadlessSwitch } from "@headlessui/react";
+import clsx from "clsx";
 
 export type SwitchProps = {
   label: string;
@@ -11,15 +12,23 @@ export default function Switch({ label, checked, onChange }: SwitchProps) {
     <HeadlessSwitch.Group>
       <div className="flex items-center gap-2 whitespace-nowrap">
         <HeadlessSwitch
-          className={`${
-            checked ? "bg-blue-600" : "bg-gray-200"
-          } relative inline-flex h-6 w-11 items-center rounded-full`}
+          className={clsx(
+            "relative inline-flex h-6 w-11 items-center rounded-full transition",
+            {
+              "bg-primary": checked,
+              "bg-gray-300": !checked
+            }
+          )}
           checked={checked}
           onChange={onChange}>
           <span
-            className={`${
-              checked ? "translate-x-6" : "translate-x-1"
-            } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+            className={clsx(
+              "inline-block h-4 w-4 transform rounded-full bg-white transition",
+              {
+                "translate-x-6": checked,
+                "translate-x-1": !checked
+              }
+            )}
           />
         </HeadlessSwitch>
         <HeadlessSwitch.Label className="cursor-pointer">
