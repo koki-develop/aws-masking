@@ -5,6 +5,7 @@ import Switch from "~lib/components/Switch";
 import "./index.css";
 
 import clsx from "clsx";
+import iconSrc from "data-url:../../assets/icon.png";
 import { useCallback } from "react";
 
 import type { Settings } from "~lib/types";
@@ -45,7 +46,8 @@ function IndexPopup() {
 
   return (
     <div className="bg-secondary text-white">
-      <div className="px-4 py-2 flex">
+      <div className="px-4 py-2 flex items-center gap-2">
+        <img className="object-contain" src={iconSrc} alt="" width={20} />
         <h1 className="text-base flex-grow whitespace-nowrap">AWS Masking</h1>
         <Switch checked={!settings.disabled} onChange={handleChangeEnabled} />
       </div>
