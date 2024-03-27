@@ -10,6 +10,9 @@ export const config: PlasmoCSConfig = {
 };
 
 export const annotatePatterns = {
+  arn: [
+    "arn:(aws[a-zA-Z-]*)?:([a-zA-Z0-9-\\.\\_]*):([a-zA-Z0-9-\\.\\_]*):(.*):(.*)"
+  ],
   accountId: ["\\d{12}", "\\d{4}-\\d{4}-\\d{4}"],
   accessKeyId: ["(?:ASIA|AKIA|AROA|AIDA)([A-Z0-7]{16})"],
   secretAccessKey: ["[a-zA-Z0-9+/]{40}"]
@@ -32,6 +35,7 @@ const _applySettings = (settings: Settings) => {
   document.body.dataset.aws_masking_inputs = settings.maskInputs.toString();
   document.body.dataset.aws_masking_account_ids =
     settings.maskAccountIds.toString();
+  document.body.dataset.aws_masking_arns = settings.maskArns.toString();
   document.body.dataset.aws_masking_access_key_ids =
     settings.maskAccessKeys.toString();
   document.body.dataset.aws_masking_secret_access_keys =
@@ -68,22 +72,26 @@ const _annotateTexts = (node: Element) => {
   if (node.nodeType !== Node.TEXT_NODE) {
     node.childNodes.forEach((child: Element) => _annotateTexts(child));
   } else {
-    if (node.parentElement.dataset.aws_masking_account_id === "true") return;
-    if (node.parentElement.dataset.aws_masking_access_key_id === "true") return;
-    if (node.parentElement.dataset.aws_masking_secret_access_key === "true")
-      return;
-
-    const nodeVal = node.nodeValue;
-    const newElement = document.createElement("span");
-    let lastIdx = 0;
-    let matchFound = false;
-
     const mappings = {
+      aws_masking_arn: annotatePatterns.arn,
       aws_masking_account_id: annotatePatterns.accountId,
       aws_masking_access_key_id: annotatePatterns.accessKeyId,
       aws_masking_secret_access_key: annotatePatterns.secretAccessKey
     };
 
+    if (node.parentElement.dataset.aws_masking_arn === "true")
+      delete mappings.aws_masking_arn;
+    if (node.parentElement.dataset.aws_masking_account_id === "true")
+      delete mappings.aws_masking_account_id;
+    if (node.parentElement.dataset.aws_masking_access_key_id === "true")
+      delete mappings.aws_masking_access_key_id;
+    if (node.parentElement.dataset.aws_masking_secret_access_key === "true")
+      delete mappings.aws_masking_secret_access_key;
+
+    const nodeVal = node.nodeValue;
+    const newElement = document.createElement("span");
+    let lastIdx = 0;
+    let matchFound = false;
     for (const [dataAttr, patterns] of Object.entries(mappings)) {
       for (const pattern of patterns) {
         const regexPattern = new RegExp(`\\b${pattern}\\b`, "g");
@@ -104,6 +112,7 @@ const _annotateTexts = (node: Element) => {
           matchFound = true;
         }
       }
+      if (matchFound) break;
     }
     if (lastIdx < nodeVal.length) {
       const nonMatchedEndText = document.createTextNode(nodeVal.slice(lastIdx));
@@ -123,6 +132,7 @@ const _annotateInput = (input: HTMLInputElement) => {
   const value = input.value;
 
   const mappings = {
+    aws_masking_arn: annotatePatterns.arn,
     aws_masking_account_id: annotatePatterns.accountId,
     aws_masking_access_key_id: annotatePatterns.accessKeyId,
     aws_masking_secret_access_key: annotatePatterns.secretAccessKey

@@ -1,3 +1,5 @@
+/* TODO: refactor */
+
 body {
   &:not([data-aws_masking_disabled="true"]) {
     /* account id */
@@ -20,6 +22,33 @@ body {
         textarea,
         input {
           &[data-aws_masking_account_id="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
+          }
+        }
+      }
+    }
+
+    /* arn */
+    &[data-aws_masking_arns="true"] {
+      span[data-aws_masking_arn="true"] {
+        filter: blur(5px);
+      }
+
+      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
+        textarea,
+        input {
+          &[data-aws_masking_arn="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
+          }
+        }
+      }
+
+      &[data-aws_masking_inputs="true"] {
+        textarea,
+        input {
+          &[data-aws_masking_arn="true"] {
             color: transparent !important;
             text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
           }

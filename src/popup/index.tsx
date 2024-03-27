@@ -12,6 +12,7 @@ function IndexPopup() {
   const [settings, setSettings] = useStorage<Settings>("AWS_MASKING_SETTINGS", {
     disabled: false,
     maskInputs: true,
+    maskArns: true,
     maskAccountIds: true,
     maskAccessKeys: true,
     maskSecretAccessKeys: true
@@ -27,6 +28,10 @@ function IndexPopup() {
 
   const handleChangeMaskAccountIds = useCallback((checked: boolean) => {
     setSettings((prev) => ({ ...prev, maskAccountIds: checked }));
+  }, []);
+
+  const handleChangeMaskArns = useCallback((checked: boolean) => {
+    setSettings((prev) => ({ ...prev, maskArns: checked }));
   }, []);
 
   const handleChangeMaskAccessKeys = useCallback((checked: boolean) => {
@@ -48,6 +53,11 @@ function IndexPopup() {
         label="Mask Inputs"
         checked={settings.maskInputs}
         onChange={handleChangeMaskInputs}
+      />
+      <Switch
+        label="Mask ARNs"
+        checked={settings.maskArns}
+        onChange={handleChangeMaskArns}
       />
       <Switch
         label="Mask Account IDs"
