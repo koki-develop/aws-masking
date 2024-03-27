@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  display: inline-block;
+  @apply inline-block;
 }
