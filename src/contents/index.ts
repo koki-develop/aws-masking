@@ -3,7 +3,11 @@ import type { PlasmoCSConfig } from "plasmo";
 import type { Settings } from "~lib/types";
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://*.console.aws.amazon.com/*", "https://*.awsapps.com/*"],
+  matches: [
+    "https://*.console.aws.amazon.com/*",
+    "https://*.awsapps.com/*",
+    "https://*.signin.aws.amazon.com/*"
+  ],
   all_frames: true,
   run_at: "document_end",
   css: ["styles.css"]
