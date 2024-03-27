@@ -68,10 +68,9 @@ const _annotateTexts = (node: Element) => {
   if (node.nodeType !== Node.TEXT_NODE) {
     node.childNodes.forEach((child: Element) => _annotateTexts(child));
   } else {
-    if (node.parentElement?.dataset.aws_masking_account_id === "true") return;
-    if (node.parentElement?.dataset.aws_masking_access_key_id === "true")
-      return;
-    if (node.parentElement?.dataset.aws_masking_secret_access_key === "true")
+    if (node.parentElement.dataset.aws_masking_account_id === "true") return;
+    if (node.parentElement.dataset.aws_masking_access_key_id === "true") return;
+    if (node.parentElement.dataset.aws_masking_secret_access_key === "true")
       return;
 
     const nodeVal = node.nodeValue;
