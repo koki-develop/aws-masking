@@ -43,25 +43,23 @@ let observer: MutationObserver;
 const _setupObserver = () => {
   if (observer) observer.disconnect();
 
-  const observeConfig = {
+  const observeConfig: MutationObserverInit = {
     attributes: true,
     childList: true,
-    subtree: true
+    subtree: true,
+    characterData: true
   };
 
-  observer = new MutationObserver((mutations) => {
+  observer = new MutationObserver(() => {
     observer.disconnect();
 
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node: Element) => {
-        _annotateTexts(node);
-      });
-    });
-
+    _annotateTexts(document.body);
     _observeInputs(document.body);
+
     observer.observe(document.body, observeConfig);
   });
 
+  _annotateTexts(document.body);
   _observeInputs(document.body);
   observer.observe(document.body, observeConfig);
 };
