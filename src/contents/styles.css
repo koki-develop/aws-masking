@@ -1,10 +1,61 @@
 body {
   &:not([data-aws_masking_disabled="true"]) {
-    &[data-aws_masking_account_ids="true"],
-    &[data-aws_masking_access_key_ids="true"],
+    /* account id */
+    &[data-aws_masking_account_ids="true"] {
+      span[data-aws_masking_account_id="true"] {
+        filter: blur(5px);
+      }
+
+      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
+        textarea,
+        input {
+          &[data-aws_masking_account_id="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
+          }
+        }
+      }
+
+      &[data-aws_masking_inputs="true"] {
+        textarea,
+        input {
+          &[data-aws_masking_account_id="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
+          }
+        }
+      }
+    }
+
+    /* access key id */
+    &[data-aws_masking_access_key_ids="true"] {
+      span[data-aws_masking_access_key_id="true"] {
+        filter: blur(5px);
+      }
+
+      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
+        textarea,
+        input {
+          &[data-aws_masking_access_key_id="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
+          }
+        }
+      }
+
+      &[data-aws_masking_inputs="true"] {
+        textarea,
+        input {
+          &[data-aws_masking_access_key_id="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
+          }
+        }
+      }
+    }
+
+    /* secret access key */
     &[data-aws_masking_secret_access_keys="true"] {
-      span[data-aws_masking_account_id="true"],
-      span[data-aws_masking_access_key_id="true"],
       span[data-aws_masking_secret_access_key="true"] {
         filter: blur(5px);
       }
@@ -12,8 +63,6 @@ body {
       &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
         textarea,
         input {
-          &[data-aws_masking_account_id="true"],
-          &[data-aws_masking_access_key_id="true"],
           &[data-aws_masking_secret_access_key="true"] {
             color: transparent !important;
             text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
@@ -24,8 +73,6 @@ body {
       &[data-aws_masking_inputs="true"] {
         textarea,
         input {
-          &[data-aws_masking_account_id="true"],
-          &[data-aws_masking_access_key_id="true"],
           &[data-aws_masking_secret_access_key="true"] {
             color: transparent !important;
             text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
