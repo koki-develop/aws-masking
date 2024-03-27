@@ -1,7 +1,6 @@
 import { Storage } from "@plasmohq/storage";
 
 chrome.storage.onChanged.addListener((changes) => {
-  console.log({ changes });
   chrome.tabs.query(
     {
       url: [

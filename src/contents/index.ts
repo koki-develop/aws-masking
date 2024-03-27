@@ -91,7 +91,6 @@ const _annotateTexts = (node: Element) => {
         const regexPattern = new RegExp(pattern, "g");
         let match: RegExpExecArray;
         while ((match = regexPattern.exec(nodeVal))) {
-          console.log({ pattern, match, nodeVal });
           const matchText = match[0];
           if (lastIdx !== match.index) {
             const nonMatchedText = document.createTextNode(
