@@ -4,9 +4,9 @@ chrome.storage.onChanged.addListener((changes) => {
   chrome.tabs.query(
     {
       url: [
-        "https://aws.amazon.com/*",
-        "https://*.aws.amazon.com/*",
-        "https://*.awsapps.com/*"
+        "https://*.console.aws.amazon.com/*",
+        "https://*.awsapps.com/*",
+        "https://*.signin.aws.amazon.com/*"
       ]
     },
     (tabs) => {
