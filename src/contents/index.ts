@@ -41,7 +41,7 @@ const _applySettings = (settings: Settings) => {
     settings.maskAccountIds.toString();
   document.body.dataset.aws_masking_arns = settings.maskArns.toString();
   document.body.dataset.aws_masking_access_key_ids =
-    settings.maskAccessKeys.toString();
+    settings.maskAccessKeyIds.toString();
   document.body.dataset.aws_masking_secret_access_keys =
     settings.maskSecretAccessKeys.toString();
 };

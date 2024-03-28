@@ -3,7 +3,7 @@ export type Settings = {
   maskInputs: boolean;
   maskAccountIds: boolean;
   maskArns: boolean;
-  maskAccessKeys: boolean;
+  maskAccessKeyIds: boolean;
   maskSecretAccessKeys: boolean;
 };
 
@@ -12,6 +12,6 @@ export const defaultSettings: Settings = {
   maskInputs: true,
   maskAccountIds: true,
   maskArns: true,
-  maskAccessKeys: true,
+  maskAccessKeyIds: true,
   maskSecretAccessKeys: true
 };

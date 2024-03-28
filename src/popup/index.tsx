@@ -44,11 +44,11 @@ function IndexPopup() {
     setSettings((prev) => ({ ...defaultSettings, ...prev, maskArns: checked }));
   }, []);
 
-  const handleChangeMaskAccessKeys = useCallback((checked: boolean) => {
+  const handleChangeMaskAccessKeyIds = useCallback((checked: boolean) => {
     setSettings((prev) => ({
       ...defaultSettings,
       ...prev,
-      maskAccessKeys: checked
+      maskAccessKeyIds: checked
     }));
   }, []);
 
@@ -90,9 +90,9 @@ function IndexPopup() {
           onChange={handleChangeMaskAccountIds}
         />
         <Switch
-          label="Mask Access Keys"
-          checked={settings.maskAccessKeys}
-          onChange={handleChangeMaskAccessKeys}
+          label="Mask Access Key IDs"
+          checked={settings.maskAccessKeyIds}
+          onChange={handleChangeMaskAccessKeyIds}
         />
         <Switch
           label="Mask Secret Access Keys"
