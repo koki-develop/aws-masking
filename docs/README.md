@@ -8,7 +8,7 @@ Enhance your security by auto-hiding sensitive information on AWS Management Con
 </p>
 
 <p align="center">
-<img src="./console.png" />
+<img src="./demo.gif" />
 </p>
 
 # Installation
