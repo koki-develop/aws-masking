@@ -1,6 +1,6 @@
 {
   "name": "aws-masking",
-  "displayName": "Aws masking",
+  "displayName": "AWS Masking",
   "version": "0.0.1",
   "description": "Enhance your security by auto-hiding sensitive information on AWS Management Console.",
   "author": "koki-develop <kou.pg.0131@gmail.com>",
