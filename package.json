@@ -33,7 +33,9 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "https://*.console.aws.amazon.com/*",
+      "https://*.awsapps.com/*",
+      "https://*.signin.aws.amazon.com/*"
     ]
   }
 }
