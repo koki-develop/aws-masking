@@ -15,7 +15,7 @@ Enhance your security by auto-hiding sensitive information on AWS Management Con
 
 Add to your browser from Chrome Web Store.
 
-TODO: link
+- [AWS Masking](https://chromewebstore.google.com/detail/aws-masking/nblpfncgdloilgeicnnlihegobmhjifb)
 
 # LICENSE
 
