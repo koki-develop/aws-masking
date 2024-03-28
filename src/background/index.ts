@@ -1,5 +1,7 @@
 import { Storage } from "@plasmohq/storage";
 
+import { defaultSettings, type Settings } from "~lib/types";
+
 chrome.storage.onChanged.addListener((changes) => {
   chrome.tabs.query(
     {
@@ -26,12 +28,19 @@ chrome.storage.onChanged.addListener((changes) => {
   return true;
 });
 
-chrome.runtime.onMessage.addListener(async (request, _sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
   if (request.method === "GET_SETTINGS") {
     const storage = new Storage();
-    const settings = await storage.get("AWS_MASKING_SETTINGS");
 
-    sendResponse(settings);
+    storage.get<Settings>("AWS_MASKING_SETTINGS").then((settings) => {
+      const response = {
+        ...defaultSettings,
+        ...settings
+      };
+
+      sendResponse(response);
+    });
+
+    return true;
   }
-  return true;
 });
