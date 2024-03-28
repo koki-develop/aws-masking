@@ -8,40 +8,56 @@ import clsx from "clsx";
 import iconSrc from "data-url:../../assets/icon.png";
 import { useCallback } from "react";
 
-import type { Settings } from "~lib/types";
+import { defaultSettings, type Settings } from "~lib/types";
 
 function IndexPopup() {
-  const [settings, setSettings] = useStorage<Settings>("AWS_MASKING_SETTINGS", {
-    disabled: false,
-    maskInputs: true,
-    maskArns: true,
-    maskAccountIds: true,
-    maskAccessKeys: true,
-    maskSecretAccessKeys: true
-  });
+  const [settings, setSettings] = useStorage<Settings>(
+    "AWS_MASKING_SETTINGS",
+    defaultSettings
+  );
 
   const handleChangeEnabled = useCallback((checked: boolean) => {
-    setSettings((prev) => ({ ...prev, disabled: !checked }));
+    setSettings((prev) => ({
+      ...prev,
+      ...defaultSettings,
+      disabled: !checked
+    }));
   }, []);
 
   const handleChangeMaskInputs = useCallback((checked: boolean) => {
-    setSettings((prev) => ({ ...prev, maskInputs: checked }));
+    setSettings((prev) => ({
+      ...prev,
+      ...defaultSettings,
+      maskInputs: checked
+    }));
   }, []);
 
   const handleChangeMaskAccountIds = useCallback((checked: boolean) => {
-    setSettings((prev) => ({ ...prev, maskAccountIds: checked }));
+    setSettings((prev) => ({
+      ...prev,
+      ...defaultSettings,
+      maskAccountIds: checked
+    }));
   }, []);
 
   const handleChangeMaskArns = useCallback((checked: boolean) => {
-    setSettings((prev) => ({ ...prev, maskArns: checked }));
+    setSettings((prev) => ({ ...prev, ...defaultSettings, maskArns: checked }));
   }, []);
 
   const handleChangeMaskAccessKeys = useCallback((checked: boolean) => {
-    setSettings((prev) => ({ ...prev, maskAccessKeys: checked }));
+    setSettings((prev) => ({
+      ...prev,
+      ...defaultSettings,
+      maskAccessKeys: checked
+    }));
   }, []);
 
   const handleChangeMaskSecretAccessKeys = useCallback((checked: boolean) => {
-    setSettings((prev) => ({ ...prev, maskSecretAccessKeys: checked }));
+    setSettings((prev) => ({
+      ...prev,
+      ...defaultSettings,
+      maskSecretAccessKeys: checked
+    }));
   }, []);
 
   return (
