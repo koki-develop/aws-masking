@@ -18,44 +18,44 @@ function IndexPopup() {
 
   const handleChangeEnabled = useCallback((checked: boolean) => {
     setSettings((prev) => ({
-      ...prev,
       ...defaultSettings,
+      ...prev,
       disabled: !checked
     }));
   }, []);
 
   const handleChangeMaskInputs = useCallback((checked: boolean) => {
     setSettings((prev) => ({
-      ...prev,
       ...defaultSettings,
+      ...prev,
       maskInputs: checked
     }));
   }, []);
 
   const handleChangeMaskAccountIds = useCallback((checked: boolean) => {
     setSettings((prev) => ({
-      ...prev,
       ...defaultSettings,
+      ...prev,
       maskAccountIds: checked
     }));
   }, []);
 
   const handleChangeMaskArns = useCallback((checked: boolean) => {
-    setSettings((prev) => ({ ...prev, ...defaultSettings, maskArns: checked }));
+    setSettings((prev) => ({ ...defaultSettings, ...prev, maskArns: checked }));
   }, []);
 
   const handleChangeMaskAccessKeys = useCallback((checked: boolean) => {
     setSettings((prev) => ({
-      ...prev,
       ...defaultSettings,
+      ...prev,
       maskAccessKeys: checked
     }));
   }, []);
 
   const handleChangeMaskSecretAccessKeys = useCallback((checked: boolean) => {
     setSettings((prev) => ({
-      ...prev,
       ...defaultSettings,
+      ...prev,
       maskSecretAccessKeys: checked
     }));
   }, []);
