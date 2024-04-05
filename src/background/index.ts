@@ -8,7 +8,8 @@ chrome.storage.onChanged.addListener((changes) => {
       url: [
         "https://*.console.aws.amazon.com/*",
         "https://*.awsapps.com/*",
-        "https://*.signin.aws.amazon.com/*"
+        "https://*.signin.aws.amazon.com/*",
+        "https://health.aws.amazon.com/*"
       ]
     },
     (tabs) => {

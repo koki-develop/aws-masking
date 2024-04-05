@@ -6,7 +6,8 @@ export const config: PlasmoCSConfig = {
   matches: [
     "https://*.console.aws.amazon.com/*",
     "https://*.awsapps.com/*",
-    "https://*.signin.aws.amazon.com/*"
+    "https://*.signin.aws.amazon.com/*",
+    "https://health.aws.amazon.com/*"
   ],
   all_frames: true,
   run_at: "document_end",
