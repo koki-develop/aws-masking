@@ -117,5 +117,64 @@ body {
         }
       }
     }
+
+    /* organizational unit */
+    &[data-aws_masking_organizational_units="true"] {
+      span[data-aws_masking_organizational_unit="true"] {
+        filter: blur(5px);
+      }
+
+      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"],
+      &[data-aws_masking_inputs="true"] {
+        textarea,
+        input[type="text"],
+        input[type="search"] {
+          &[data-aws_masking_organizational_unit="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
+          }
+        }
+      }
+    }
+
+    /* root unit */
+    &[data-aws_masking_root_units="true"] {
+      span[data-aws_masking_root_unit="true"] {
+        filter: blur(5px);
+      }
+
+      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"],
+      &[data-aws_masking_inputs="true"] {
+        textarea,
+        input[type="text"],
+        input[type="search"] {
+          &[data-aws_masking_root_unit="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
+          }
+        }
+      }
+    }
+
+    /* email */
+    &[data-aws_masking_emails="true"] {
+      span[data-aws_masking_email="true"] {
+        filter: blur(5px);
+      }
+
+      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"],
+      &[data-aws_masking_inputs="true"] {
+        textarea,
+        input[type="text"],
+        input[type="search"] {
+          &[data-aws_masking_email="true"] {
+            color: transparent !important;
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
+          }
+        }
+      }
+    }
+
+    /* Remove the phone number styles */
   }
 }

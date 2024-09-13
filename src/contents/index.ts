@@ -20,7 +20,10 @@ export const annotatePatterns = {
   ],
   accountId: ["\\d{12}", "\\d{4}-\\d{4}-\\d{4}"],
   accessKeyId: ["(?:ASIA|AKIA|AROA|AIDA)([A-Z0-7]{16})"],
-  secretAccessKey: ["[a-zA-Z0-9+/]{40}"]
+  secretAccessKey: ["[a-zA-Z0-9+/]{40}"],
+  organizationalUnit: ["ou-[a-zA-Z0-9-]{4,32}"],
+  rootUnit: ["r-[a-zA-Z0-9]{4,32}"],
+  email: ["[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"]
 } as const;
 
 chrome.runtime.sendMessage({ method: "GET_SETTINGS" }, (settings: Settings) => {
@@ -45,6 +48,12 @@ const _applySettings = (settings: Settings) => {
     settings.maskAccessKeyIds.toString();
   document.body.dataset.aws_masking_secret_access_keys =
     settings.maskSecretAccessKeys.toString();
+  document.body.dataset.aws_masking_organizational_units =
+    settings.maskOrganizationalUnits.toString();
+  document.body.dataset.aws_masking_root_units =
+    settings.maskRootUnits.toString();
+  document.body.dataset.aws_masking_emails =
+    settings.maskEmails.toString();
 };
 
 let observer: MutationObserver;
@@ -81,7 +90,10 @@ const _annotateTexts = (node: Element) => {
       aws_masking_arn: annotatePatterns.arn,
       aws_masking_account_id: annotatePatterns.accountId,
       aws_masking_access_key_id: annotatePatterns.accessKeyId,
-      aws_masking_secret_access_key: annotatePatterns.secretAccessKey
+      aws_masking_secret_access_key: annotatePatterns.secretAccessKey,
+      aws_masking_organizational_unit: annotatePatterns.organizationalUnit,
+      aws_masking_root_unit: annotatePatterns.rootUnit,
+      aws_masking_email: annotatePatterns.email
     };
 
     if (node.parentElement.dataset.aws_masking_arn === "true")
@@ -92,6 +104,12 @@ const _annotateTexts = (node: Element) => {
       delete mappings.aws_masking_access_key_id;
     if (node.parentElement.dataset.aws_masking_secret_access_key === "true")
       delete mappings.aws_masking_secret_access_key;
+    if (node.parentElement.dataset.aws_masking_organizational_unit === "true")
+      delete mappings.aws_masking_organizational_unit;
+    if (node.parentElement.dataset.aws_masking_root_unit === "true")
+      delete mappings.aws_masking_root_unit;
+    if (node.parentElement.dataset.aws_masking_email === "true")
+      delete mappings.aws_masking_email;
 
     const nodeVal = node.nodeValue;
     const newElement = document.createElement("span");
@@ -140,7 +158,10 @@ const _annotateInput = (input: HTMLInputElement) => {
     aws_masking_arn: annotatePatterns.arn,
     aws_masking_account_id: annotatePatterns.accountId,
     aws_masking_access_key_id: annotatePatterns.accessKeyId,
-    aws_masking_secret_access_key: annotatePatterns.secretAccessKey
+    aws_masking_secret_access_key: annotatePatterns.secretAccessKey,
+    aws_masking_organizational_unit: annotatePatterns.organizationalUnit,
+    aws_masking_root_unit: annotatePatterns.rootUnit,
+    aws_masking_email: annotatePatterns.email
   };
 
   for (const [dataAttr, patterns] of Object.entries(mappings)) {
