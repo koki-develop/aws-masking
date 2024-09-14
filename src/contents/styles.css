@@ -1,180 +1,49 @@
 /* TODO: refactor */
 
-body {
-  &:not([data-aws_masking_disabled="true"]) {
-    /* account id */
-    &[data-aws_masking_account_ids="true"] {
-      span[data-aws_masking_account_id="true"] {
-        filter: blur(5px);
-      }
+body:not([data-aws_masking_disabled="true"]) {
+  /* Common styles for all masked elements */
+  [data-aws_masking_account_id="true"],
+  [data-aws_masking_arn="true"],
+  [data-aws_masking_access_key_id="true"],
+  [data-aws_masking_secret_access_key="true"],
+  [data-aws_masking_organizational_unit="true"],
+  [data-aws_masking_root_unit="true"],
+  [data-aws_masking_email="true"] {
+    filter: blur(5px);
+  }
 
-      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_account_id="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
-          }
-        }
-      }
-
-      &[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_account_id="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
-          }
-        }
+  /* Common styles for masked inputs */
+  &[data-aws_masking_inputs="true"] {
+    textarea,
+    input[type="text"],
+    input[type="search"] {
+      &[data-aws_masking_account_id="true"],
+      &[data-aws_masking_arn="true"],
+      &[data-aws_masking_access_key_id="true"],
+      &[data-aws_masking_secret_access_key="true"],
+      &[data-aws_masking_organizational_unit="true"],
+      &[data-aws_masking_root_unit="true"],
+      &[data-aws_masking_email="true"] {
+        color: transparent !important;
+        text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
       }
     }
+  }
 
-    /* arn */
-    &[data-aws_masking_arns="true"] {
-      span[data-aws_masking_arn="true"] {
-        filter: blur(5px);
-      }
-
-      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_arn="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
-          }
-        }
-      }
-
-      &[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_arn="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
-          }
-        }
+  /* Dark mode specific styles */
+  &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
+    textarea,
+    input[type="text"],
+    input[type="search"] {
+      &[data-aws_masking_account_id="true"],
+      &[data-aws_masking_arn="true"],
+      &[data-aws_masking_access_key_id="true"],
+      &[data-aws_masking_secret_access_key="true"],
+      &[data-aws_masking_organizational_unit="true"],
+      &[data-aws_masking_root_unit="true"],
+      &[data-aws_masking_email="true"] {
+        text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
       }
     }
-
-    /* access key id */
-    &[data-aws_masking_access_key_ids="true"] {
-      span[data-aws_masking_access_key_id="true"] {
-        filter: blur(5px);
-      }
-
-      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_access_key_id="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
-          }
-        }
-      }
-
-      &[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_access_key_id="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
-          }
-        }
-      }
-    }
-
-    /* secret access key */
-    &[data-aws_masking_secret_access_keys="true"] {
-      span[data-aws_masking_secret_access_key="true"] {
-        filter: blur(5px);
-      }
-
-      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_secret_access_key="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
-          }
-        }
-      }
-
-      &[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_secret_access_key="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5) !important;
-          }
-        }
-      }
-    }
-
-    /* organizational unit */
-    &[data-aws_masking_organizational_units="true"] {
-      span[data-aws_masking_organizational_unit="true"] {
-        filter: blur(5px);
-      }
-
-      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"],
-      &[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_organizational_unit="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
-          }
-        }
-      }
-    }
-
-    /* root unit */
-    &[data-aws_masking_root_units="true"] {
-      span[data-aws_masking_root_unit="true"] {
-        filter: blur(5px);
-      }
-
-      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"],
-      &[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_root_unit="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
-          }
-        }
-      }
-    }
-
-    /* email */
-    &[data-aws_masking_emails="true"] {
-      span[data-aws_masking_email="true"] {
-        filter: blur(5px);
-      }
-
-      &.awsui-polaris-dark-mode[data-aws_masking_inputs="true"],
-      &[data-aws_masking_inputs="true"] {
-        textarea,
-        input[type="text"],
-        input[type="search"] {
-          &[data-aws_masking_email="true"] {
-            color: transparent !important;
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8) !important;
-          }
-        }
-      }
-    }
-
-    /* Remove the phone number styles */
   }
 }
