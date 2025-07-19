@@ -9,8 +9,8 @@ AWS Masking is a Chrome browser extension that enhances security by automaticall
 ## Development Commands
 
 ```bash
-# Install dependencies
-pnpm install
+# Install dependencies (uses frozen lockfile)
+pnpm install --frozen-lockfile
 
 # Start development server with hot reload
 pnpm dev
@@ -18,7 +18,7 @@ pnpm dev
 # Build the extension for production
 pnpm build
 
-# Package the extension for distribution
+# Package the extension into a zip artifact
 pnpm package
 ```
 
@@ -46,17 +46,34 @@ pnpm package
 
 ### Styling Approach
 - Uses Tailwind CSS for utility-first styling
-- Custom CSS in `src/contents/styles.css` for masking effects
+- Custom CSS in `src/contents/styles.css` for masking effects:
+  - Text masking: `filter: blur(5px)`
+  - Input field masking: `text-shadow` with dark mode support
 - PostCSS configuration for processing styles
 
 ### Settings Management
 - Settings stored in Chrome storage using Plasmo Storage
 - Real-time updates propagated to all AWS tabs
 - Default settings enable all masking features
+- Settings types defined in `src/lib/types.ts`
+
+### Host Permissions
+The extension operates on the following AWS domains:
+- `https://*.console.aws.amazon.com/*`
+- `https://*.awsapps.com/*`
+- `https://*.signin.aws.amazon.com/*`
+- `https://health.aws.amazon.com/*`
+
+## CI/CD Pipeline
+
+GitHub Actions workflow runs on push to main and PRs:
+- Uses mise for tool version management
+- Caches pnpm dependencies
+- Builds and packages the extension
 
 ## Testing
 
-No specific test scripts are defined. Manual testing involves:
+No automated tests are implemented. Manual testing involves:
 1. Loading the extension in Chrome developer mode
 2. Navigating to AWS Console pages
 3. Verifying sensitive data is masked according to settings
