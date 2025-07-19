@@ -1,5 +1,5 @@
-name: 'Setup'
-description: 'Setup Node.js environment and install dependencies'
+name: "Setup"
+description: "Setup Node.js environment and install dependencies"
 
 runs:
   using: "composite"
