@@ -37,8 +37,8 @@ importers:
         specifier: 2.9.3
         version: 2.9.3(@parcel/core@2.9.3)
       '@types/chrome':
-        specifier: 0.0.258
-        version: 0.0.258
+        specifier: 0.1.0
+        version: 0.1.0
       '@types/node':
         specifier: 20.19.8
         version: 20.19.8
@@ -1378,8 +1378,8 @@ packages:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
 
-  '@types/chrome@0.0.258':
-    resolution: {integrity: sha512-vicJi6cg2zaFuLmLY7laG6PHBknjKFusPYlaKQ9Zlycskofy71rStlGvW07MUuqUIVorZf8k5KH+zeTTGcH2dQ==}
+  '@types/chrome@0.1.0':
+    resolution: {integrity: sha512-Mq712O2Ykw+EVAC5D1wt4Ot4v2rfp7nDosmxhIMKULJAa8o7ELeO88rWzRasaB+AYnqayzfX/XSWaDKBfk1rYQ==}
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
@@ -4804,7 +4804,7 @@ snapshots:
 
   '@trysound/sax@0.2.0': {}
 
-  '@types/chrome@0.0.258':
+  '@types/chrome@0.1.0':
     dependencies:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.16
