@@ -22,7 +22,7 @@
     "@ianvs/prettier-plugin-sort-imports": "4.5.1",
     "@parcel/optimizer-data-url": "2.9.3",
     "@parcel/transformer-inline-string": "2.9.3",
-    "@types/chrome": "0.0.258",
+    "@types/chrome": "0.1.0",
     "@types/node": "20.19.8",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
