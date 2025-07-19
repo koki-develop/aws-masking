@@ -60,6 +60,32 @@ function IndexPopup() {
     }));
   }, []);
 
+  const handleChangeMaskOrganizationalUnits = useCallback((checked: boolean) => {
+    setSettings((prev) => ({
+      ...defaultSettings,
+      ...prev,
+      maskOrganizationalUnits: checked
+    }));
+  }, []);
+
+  const handleChangeMaskRootUnits = useCallback((checked: boolean) => {
+    setSettings((prev) => ({
+      ...defaultSettings,
+      ...prev,
+      maskRootUnits: checked
+    }));
+  }, []);
+
+  const handleChangeMaskEmails = useCallback((checked: boolean) => {
+    setSettings((prev) => ({
+      ...defaultSettings,
+      ...prev,
+      maskEmails: checked
+    }));
+  }, []);
+
+  // Remove the handleChangeMaskPhoneNumbers function
+
   return (
     <div className="bg-secondary text-white">
       <div className="px-4 py-2 flex items-center gap-2">
@@ -98,6 +124,21 @@ function IndexPopup() {
           label="Mask Secret Access Keys"
           checked={settings.maskSecretAccessKeys}
           onChange={handleChangeMaskSecretAccessKeys}
+        />
+        <Switch
+          label="Mask Organizational Units"
+          checked={settings.maskOrganizationalUnits}
+          onChange={handleChangeMaskOrganizationalUnits}
+        />
+        <Switch
+          label="Mask Root Units"
+          checked={settings.maskRootUnits}
+          onChange={handleChangeMaskRootUnits}
+        />
+        <Switch
+          label="Mask Emails"
+          checked={settings.maskEmails}
+          onChange={handleChangeMaskEmails}
         />
       </div>
     </div>
