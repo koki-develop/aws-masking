@@ -1,0 +1,17 @@
+name: 'Setup'
+description: 'Setup Node.js environment and install dependencies'
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-
+
+    - uses: jdx/mise-action@bfb9fa0b029db830a8c570757cee683df207a6c5 # v2.4.0
+
+    - run: pnpm install --frozen-lockfile
+      shell: bash
