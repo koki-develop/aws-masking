@@ -1,12 +1,21 @@
 name: "Submit to Web Store"
+
+permissions: {}
+
 on:
   workflow_dispatch:
 
 jobs:
   build:
+    name: Build and Submit
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+        with:
+          persist-credentials: false
 
       - uses: actions/cache@2f8e54208210a422b2efd51efaa6bd6d7ca8920f # v3.4.3
         with:
