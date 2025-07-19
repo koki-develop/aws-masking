@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/koki-develop/aws-masking/compare/v0.1.3...v0.1.4) (2025-07-19)
+
+
+### Features
+
+* Release as v0.1.4 ([88a5e03](https://github.com/koki-develop/aws-masking/commit/88a5e03af8b0d512f249d1c646762f2da0b5871c))
+
 ## [0.1.3](https://github.com/koki-develop/aws-masking/compare/v0.1.2...v0.1.3) (2025-07-19)
 
 
