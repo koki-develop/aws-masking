@@ -6,20 +6,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
       - name: Cache pnpm modules
-        uses: actions/cache@v3
+        uses: actions/cache@2f8e54208210a422b2efd51efaa6bd6d7ca8920f # v3.4.3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@c3b53f6a16e57305370b4ae5a540c2077a1d50dd # v2.2.4
         with:
           version: latest
           run_install: true
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # v3.4.1
         with:
           node-version: 16.x
           cache: "pnpm"
@@ -28,7 +28,7 @@ jobs:
       - name: Package the extension into a zip artifact
         run: pnpm package
       - name: Browser Platform Publish
-        uses: PlasmoHQ/bpp@v3
+        uses: PlasmoHQ/bpp@c15984c0a74f452851c605cab46f34d9fd6cb158 # v3.8.0
         with:
           keys: ${{ secrets.SUBMIT_KEYS }}
           artifact: build/chrome-mv3-prod.zip
