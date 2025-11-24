@@ -144,13 +144,12 @@ const _annotateInput = (input: HTMLInputElement) => {
   };
 
   for (const [dataAttr, patterns] of Object.entries(mappings)) {
-    for (const pattern of patterns) {
-      if (new RegExp(`\\b${pattern}\\b`, "g").test(value)) {
-        input.dataset[dataAttr] = "true";
-        return;
-      }
-    }
-    input.dataset[dataAttr] = "false";
+    const matched = patterns.some((pattern) => {
+      const regexPattern = new RegExp(`\\b${pattern}\\b`, "g");
+      return regexPattern.test(value);
+    });
+
+    input.dataset[dataAttr] = matched.toString();
   }
 };
 
