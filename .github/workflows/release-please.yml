@@ -16,9 +16,9 @@ jobs:
     name: Release Please
     timeout-minutes: 10
     permissions:
-      contents: write  # Required to create releases and update release branches
-      pull-requests: write  # Required to create and update release pull requests
-      issues: write  # Required to label issues and PRs created by release-please
+      contents: write # Required to create releases and update release branches
+      pull-requests: write # Required to create and update release pull requests
+      issues: write # Required to label issues and PRs created by release-please
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.release-please.outputs.tag_name }}
@@ -39,7 +39,7 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Required to upload release artifacts
+      contents: write # Required to upload release artifacts
     if: ${{ needs.release-please.outputs.should-release == 'true' }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
