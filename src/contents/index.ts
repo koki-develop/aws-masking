@@ -75,7 +75,9 @@ const _setupObserver = () => {
 
 const _annotateTexts = (node: Element) => {
   if (node.nodeType !== Node.TEXT_NODE) {
-    node.childNodes.forEach((child: Element) => _annotateTexts(child));
+    Array.from(node.childNodes).forEach((child: Element) =>
+      _annotateTexts(child)
+    );
   } else {
     const mappings = {
       aws_masking_arn: annotatePatterns.arn,
@@ -94,7 +96,7 @@ const _annotateTexts = (node: Element) => {
       delete mappings.aws_masking_secret_access_key;
 
     const nodeVal = node.nodeValue;
-    const newElement = document.createElement("span");
+    const fragment = document.createDocumentFragment();
     let lastIdx = 0;
     let matchFound = false;
     for (const [dataAttr, patterns] of Object.entries(mappings)) {
@@ -107,12 +109,12 @@ const _annotateTexts = (node: Element) => {
             const nonMatchedText = document.createTextNode(
               nodeVal.slice(lastIdx, match.index)
             );
-            newElement.appendChild(nonMatchedText);
+            fragment.appendChild(nonMatchedText);
           }
           const span = document.createElement("span");
           span.dataset[dataAttr] = "true";
           span.textContent = matchText;
-          newElement.appendChild(span);
+          fragment.appendChild(span);
           lastIdx = regexPattern.lastIndex;
           matchFound = true;
         }
@@ -121,10 +123,10 @@ const _annotateTexts = (node: Element) => {
     }
     if (lastIdx < nodeVal.length) {
       const nonMatchedEndText = document.createTextNode(nodeVal.slice(lastIdx));
-      newElement.appendChild(nonMatchedEndText);
+      fragment.appendChild(nonMatchedEndText);
     }
     if (matchFound) {
-      node.parentElement.innerHTML = newElement.innerHTML;
+      node.parentNode.replaceChild(fragment, node);
     }
   }
 };
