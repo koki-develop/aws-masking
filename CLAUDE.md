@@ -20,6 +20,9 @@ pnpm build
 
 # Package the extension into a zip artifact
 pnpm package
+
+# Format code with Prettier
+pnpm fmt
 ```
 
 ## Architecture and Key Components
@@ -47,8 +50,10 @@ pnpm package
 ### Styling Approach
 - Uses Tailwind CSS for utility-first styling
 - Custom CSS in `src/contents/styles.css` for masking effects:
-  - Text masking: `filter: blur(5px)`
-  - Input field masking: `text-shadow` with dark mode support
+  - CSS variables for blur and shadow values (`--aws-masking-blur`, etc.)
+  - Text masking: `filter: blur()` on matched `<span>` elements
+  - Input field masking: `color: transparent` + `text-shadow`
+  - Dark mode detection via AWS Polaris class (`body.awsui-polaris-dark-mode`)
 - PostCSS configuration for processing styles
 
 ### Settings Management
@@ -70,6 +75,7 @@ GitHub Actions workflow runs on push to main and PRs:
 - Uses mise for tool version management
 - Caches pnpm dependencies
 - Builds and packages the extension
+- Checks code formatting with Prettier
 
 ## Testing
 
