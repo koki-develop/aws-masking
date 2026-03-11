@@ -75,6 +75,13 @@ const _setupObserver = () => {
 
 const _annotateTexts = (node: Element) => {
   if (node.nodeType !== Node.TEXT_NODE) {
+    // Skip hidden elements (JSON data containers, script/style, etc.)
+    // Note: checkVisibility() also returns false for display:contents elements,
+    // whose children are still visible, so we must not skip those.
+    if (node instanceof HTMLElement && !node.checkVisibility()) {
+      if (getComputedStyle(node).display !== "contents") return;
+    }
+
     Array.from(node.childNodes).forEach((child: Element) =>
       _annotateTexts(child)
     );
