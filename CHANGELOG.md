@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.6](https://github.com/koki-develop/aws-masking/compare/v0.1.5...v0.1.6) (2026-03-11)
+
+
+### Bug Fixes
+
+* skip hidden elements in text annotation to avoid corrupting embedded data ([cb33de0](https://github.com/koki-develop/aws-masking/commit/cb33de0af10522df5a403164a64d04a48997be5a))
+* use DocumentFragment to avoid destroying sibling nodes during text annotation ([c41ae56](https://github.com/koki-develop/aws-masking/commit/c41ae5600a2577efb256fafadb0a9b74f77e896d))
+
 ## [0.1.5](https://github.com/koki-develop/aws-masking/compare/v0.1.4...v0.1.5) (2025-11-24)
 
 
