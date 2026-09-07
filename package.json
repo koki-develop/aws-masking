@@ -14,7 +14,7 @@
     "@headlessui/react": "1.7.19",
     "@plasmohq/storage": "1.15.0",
     "clsx": "2.1.1",
-    "plasmo": "0.85.2",
+    "plasmo": "0.90.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
